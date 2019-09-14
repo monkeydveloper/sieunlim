@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
 import Main from './views/pages/user/Main.js';
 import RentalManagement from './views/pages/admin/RentalManagement.js';
 
@@ -10,9 +11,11 @@ export default class App extends React.Component {
     
     render(){
       return (
-        
         <div className="app">
-          <RentalManagement/>
+          <BrowserRouter>
+            <Route exact path="/" component={Main}/>
+            <Route exact path="/management" component={RentalManagement}/>
+          </BrowserRouter>
         </div>
       )
     }
