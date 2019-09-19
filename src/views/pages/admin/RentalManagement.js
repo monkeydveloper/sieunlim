@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Table, Container, Row ,Col,Button,ButtonGroup, Form, Image} from 'react-bootstrap';
 
-import GameComponent from '../../../components/game/GameComponent.js';
+import {GameStatus, IsNewGame} from '../../../components/game/GameInfoComp.js';
 export default class RentalManagement extends React.Component {
     constructor(props) {
       super(props);
@@ -42,9 +42,9 @@ export default class RentalManagement extends React.Component {
                   return(
                     <tr>
                       <td className="text-center"><Image src={game.gameImage} width="150px" rounded /></td>
-                      <td>{game.gameName} <br></br> owned by {game.ownerName}</td>
-                      <td></td>
-                      <td>{game.rating}</td>
+                      <td>{game.gameName} {IsNewGame('2019-09-18')}<br></br> owned by {game.ownerName}</td>
+                      <td>{GameStatus(game.status)}</td>
+                      <td>{game.rating}/10</td>
                     </tr>
                   );
                 })
