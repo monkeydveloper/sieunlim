@@ -6,7 +6,7 @@ import { Nav } from 'react-bootstrap';
 import { Navbar } from 'react-bootstrap';
 import { NavDropdown } from 'react-bootstrap';
 import { Form } from 'react-bootstrap';
-import { FormControl } from 'react-bootstrap';
+import { FormControl, Container } from 'react-bootstrap';
 
 import RequestPopup from './RequestPopup.js';
 
@@ -18,6 +18,7 @@ export default class Main extends React.Component {
     render() {
 
       return (
+        <Container>
         <div className="layout-main">
           <div className="header-background">
             <div className="header-contents">
@@ -65,6 +66,7 @@ export default class Main extends React.Component {
 
           </div>
         </div>
+        </Container>
       )
     }
   }

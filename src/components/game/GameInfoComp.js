@@ -1,20 +1,7 @@
 
 import React from 'react';
-import { Button} from 'react-bootstrap';
+import { Button, Image} from 'react-bootstrap';
 
-export const IsNewGame = (createdAt) => {
-    
-    let createdDate = new Date(createdAt);
-    let date = new Date();
-    let sub = date - createdDate;
-    console.log(sub);
-    //let test = new Date(sub);
-    //console.log(date - createdDate);
-    //console.log(test.getTime());
-    
-
-
-}
 export const GameStatus = (status) => {
     
     //let str = '에러';
