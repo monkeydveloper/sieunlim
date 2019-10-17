@@ -5,6 +5,8 @@ import Main from './views/pages/user/Main.js';
 import Header from './views/layout/Header.js';
 import Footer from './views/layout/Footer.js';
 import RentalManagement from './views/pages/admin/RentalManagement.js';
+import GameManagement from './views/pages/admin/GameManagement.js';
+import GameRegedit from './views/pages/admin/GameRegistration.js';
 
 export default class App extends React.Component {
     constructor(props){
@@ -16,6 +18,7 @@ export default class App extends React.Component {
       return (
         
           <BrowserRouter>
+<<<<<<< HEAD
             <header>
               <Route path="/" component={Header}/>
             </header>
@@ -26,6 +29,12 @@ export default class App extends React.Component {
             <footer>
               <Route path="/" component={Footer}/>   
             </footer>
+=======
+            <Route exact path="/" component={Main}/>
+            <Route exact path="/management" component={RentalManagement}/>
+            <Route exact path="/gameList" component={GameManagement}/>
+            <Route exact path="/gameRegedit" component={GameRegedit}/>
+>>>>>>> aaa8e0b6eff63eda284c94df9f38603cb25efd68
           </BrowserRouter>
      
       )

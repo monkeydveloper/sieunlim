@@ -13,10 +13,15 @@ import RequestPopup from './RequestPopup.js';
 export default class Main extends React.Component {
     constructor(props) {
       super(props);
-      this.state = {gameList : [{"gameId":"game1","gameName":"두부왕국","ownerId":"user1","ownerName":"김두부","lendableYn":"Y","lendHistory":[{"borrowerId":"user3","borrowerName":"이빌림","borrowStartDate":"2019-01-15 00:00:00","borrowEndDate":"2019-01-25 23:59:59","message":"두부왕국 유잼"},{"borrowerId":"user3","borrowerName":"이빌림","borrowStartDate":"2019-01-15 00:00:00","borrowEndDate":"2019-01-25 23:59:59","message":"쏘쏘"},{"borrowerId":"user2","borrowerName":"박빌리","borrowStartDate":"2019-01-01 00:00:00","borrowEndDate":"2019-01-10 23:59:59","message":"노잼이네;"}]},{"gameId":"game2","gameName":"도블","ownerId":"user4","ownerName":"박도블","lendableYn":"N","lendHistory":[{"borrowerId":"user5","borrowerName":"최게임","borrowStartDate":"2019-07-01 00:00:00","borrowEndDate":"2019-08-31 23:59:59","message":""},{"borrowerId":"user3","borrowerName":"이빌림","borrowStartDate":"2019-03-06 00:00:00","borrowEndDate":"2019-03-31 23:59:59","message":"두부왕국보다 잼"},{"borrowerId":"user2","borrowerName":"박빌리","borrowStartDate":"2019-03-01 00:00:00","borrowEndDate":"2019-03-05 23:59:59","message":"종나재밋네;"}]}]};
+      this.state = {
+        selectedGame: {},
+        gameList : [{"gameId":"game1","gameName":"두부왕국","ownerId":"user1","ownerName":"김두부","lendableYn":"Y","lendHistory":[{"borrowerId":"user3","borrowerName":"이빌림","borrowStartDate":"2019-01-15 00:00:00","borrowEndDate":"2019-01-25 23:59:59","message":"두부왕국 유잼"},{"borrowerId":"user3","borrowerName":"이빌림","borrowStartDate":"2019-01-15 00:00:00","borrowEndDate":"2019-01-25 23:59:59","message":"쏘쏘"},{"borrowerId":"user2","borrowerName":"박빌리","borrowStartDate":"2019-01-01 00:00:00","borrowEndDate":"2019-01-10 23:59:59","message":"노잼이네;"}]},{"gameId":"game2","gameName":"도블","ownerId":"user4","ownerName":"박도블","lendableYn":"N","lendHistory":[{"borrowerId":"user5","borrowerName":"최게임","borrowStartDate":"2019-07-01 00:00:00","borrowEndDate":"2019-08-31 23:59:59","message":""},{"borrowerId":"user3","borrowerName":"이빌림","borrowStartDate":"2019-03-06 00:00:00","borrowEndDate":"2019-03-31 23:59:59","message":"두부왕국보다 잼"},{"borrowerId":"user2","borrowerName":"박빌리","borrowStartDate":"2019-03-01 00:00:00","borrowEndDate":"2019-03-05 23:59:59","message":"종나재밋네;"}]}]
+      };
+    }
+    fnSelectGame2() {
+      console.log("What's different?");
     }
     render() {
-
       return (
         <Container>
         <div className="layout-main">
@@ -37,11 +42,12 @@ export default class Main extends React.Component {
           </div>
           <div className="layout-contents">
 
-            <RequestPopup />
+            <RequestPopup selectedGame={this.state.selectedGame}/>
 
             <Table striped bordered hover variant="dark">
               <thead>
                 <tr>
+                  <th></th>
                   <th>No</th>
                   <th>Name</th>
                   <th>Owner</th>
@@ -53,6 +59,7 @@ export default class Main extends React.Component {
                   this.state.gameList.map((contact, i) => {
                     return(
                       <tr>
+                        <td><input type="radio" name="select-game" onChange={() => {this.setState({selectedGame: contact})}}/></td>
                         <td>{i+1}</td>
                         <td>{contact.gameName}</td>
                         <td>{contact.ownerName}</td>

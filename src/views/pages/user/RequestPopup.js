@@ -2,9 +2,19 @@ import React, { useState } from 'react';
 import {
   Modal,
   Button,
-  Input,
   Form
 } from 'react-bootstrap';
+
+const RequirementFlag = () => {
+  // 왜 안 되냠 ㅜ
+  let classHighlight = {
+    color: 'red',
+    background: 'lightgrey'
+  };
+  return (
+    <span className={classHighlight}>*</span>
+  )
+};
 
 const RequestPopup = (props) => {
   const [show, setShow] = useState(false);
@@ -16,16 +26,16 @@ const RequestPopup = (props) => {
       <Button variant="primary" onClick={handleShow}>
         대여 신청하기
       </Button>
-
+      
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>대여 신청</Modal.Title>
         </Modal.Header>
+        {props.selectedGame.gameName !== undefined ? 
+        <>
         <Modal.Body>
-          게임 대여 항목(TODO :: 각 게임별 대여 개수 인풋 뚫어줘야 함.) <br />
-          1. 두부왕국 <br />
-          2. 도블ㄹㄹ <br />
-          *은 필수 항목입니다.(TODO :: 강조 표시 및 색상 변경)
+          선택한 게임은 <b>{props.selectedGame.ownerName}님의 {props.selectedGame.gameName}</b> 입니다. <br />
+          아래에 신청자 정보를 입력해주세요. * 표시는 필수 항목입니다.
           <Form>
             <Form.Group controlId="formBasicName">
               <Form.Label>*이름</Form.Label>
@@ -44,7 +54,7 @@ const RequestPopup = (props) => {
             </Form.Group>
 
             <Form.Group controlId="formBasicPassword">
-              <Form.Label>*대여 기간(TODO :: 캘린더가 없다;)</Form.Label>
+              <Form.Label>*대여 기간</Form.Label>
               <Form.Control type="text" placeholder="이 날부터(ex. 20190919)" />
               <Form.Control type="text" placeholder="이 날까지(ex. 20190930)" />
               <Form.Text className="text-muted">
@@ -52,7 +62,14 @@ const RequestPopup = (props) => {
               </Form.Text>
             </Form.Group>
             <Form.Group controlId="formBasicCheckbox">
-              <Form.Check type="checkbox" label="반납일에 문자 받기(TODO :: 이거 체크했으면 휴대전화도 필수로 체크하기)" />
+              <Form.Check type="checkbox" label="반납일에 문자 받기" />
+            </Form.Group>
+            <Form.Group controlId="formTODOList">
+              <div>TODO :: </div>
+              <div>여러 게임을 한 번에 대여하는 건 나중에 합시다.</div>
+              <div>강조 표시 및 색상 변경</div>
+              <div>캘린더가 없다;</div>
+              <div>반납일에 문자 받기 체크했으면 휴대전화도 필수로 체크하기</div>
             </Form.Group>
           </Form>
         </Modal.Body>
@@ -64,6 +81,19 @@ const RequestPopup = (props) => {
             신청하기
           </Button>
         </Modal.Footer>
+        </>
+        :
+        <>
+        <Modal.Body>
+          선택한 게임이 없습니다.
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+              취소
+            </Button>
+        </Modal.Footer>
+        </>
+        }
       </Modal>
     </div>
   );
