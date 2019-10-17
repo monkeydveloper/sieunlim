@@ -4,7 +4,7 @@ import { Table, Container, Row ,Col,Button,ButtonGroup, Form, Image, Body} from 
 
 import { GetDiffOfDate } from '../../../utils/DateUtil.js';
 import { GameStatus } from '../../../components/game/GameInfoComp.js';
-import InfiniteScroll from '../../../utils/InfiniteScroll.js';
+//import InfiniteScroll from '../../../utils/InfiniteScroll.js';
 
 export default class RentalManagement extends React.Component {
     constructor(props) {
@@ -40,11 +40,11 @@ export default class RentalManagement extends React.Component {
                 <col width="50%"/>
                 <col width="15%"/>
                 <col width="15%"/>
-              <InfiniteScroll 
-                size={this.state.gameList.length} 
-                render={this.state.gameList.map((game) => {
+              
+               
+                {this.state.gameList.map((game, i) => {
                   return (
-                    <tr>
+                    <tr index={i}> 
                       <td className="text-center"><Image src={game.gameImage} width="150px" rounded /></td>
                       <td>{game.gameName} {GetDiffOfDate(game.createdAt)}<br></br> owned by {game.ownerName}</td>
                       <td>{GameStatus(game.status)}</td>
@@ -52,7 +52,7 @@ export default class RentalManagement extends React.Component {
                     </tr>
                   );
                 })}
-              />
+              
                 
             
             </Table>

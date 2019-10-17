@@ -18,23 +18,18 @@ export default class App extends React.Component {
       return (
         
           <BrowserRouter>
-<<<<<<< HEAD
             <header>
               <Route path="/" component={Header}/>
             </header>
             <article className="body-with-header">
               <Route exact path="/" component={Main}/>
               <Route exact path="/management" component={RentalManagement}/>
+              <Route exact path="/gameList" component={GameManagement}/>
+              <Route exact path="/gameRegedit" component={GameRegedit}/>
             </article>
             <footer>
               <Route path="/" component={Footer}/>   
             </footer>
-=======
-            <Route exact path="/" component={Main}/>
-            <Route exact path="/management" component={RentalManagement}/>
-            <Route exact path="/gameList" component={GameManagement}/>
-            <Route exact path="/gameRegedit" component={GameRegedit}/>
->>>>>>> aaa8e0b6eff63eda284c94df9f38603cb25efd68
           </BrowserRouter>
      
       )
