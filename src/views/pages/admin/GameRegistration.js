@@ -1,5 +1,6 @@
 import React from 'react';
 import {Row, InputGroup, FormControl, Button, Card, Container, Col, Image, Form, Dropdown} from "react-bootstrap"
+import ImageUpload from "../../../utils/ImageUpload"
 
 
 class GameRegist extends React.Component {
@@ -15,7 +16,8 @@ class GameRegist extends React.Component {
                     <Container>
                     <Row className="mb-3">
                         <Col sm={3}>
-                            <Image src="https://avatarfiles.alphacoders.com/709/thumb-70914.png" />
+                            {/*<Image src="https://avatarfiles.alphacoders.com/709/thumb-70914.png" />*/}
+                            <ImageUpload></ImageUpload>
                         </Col>             
                     </Row>
                     <Row>
